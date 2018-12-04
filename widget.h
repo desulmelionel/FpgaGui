@@ -2,6 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QTimer>
 
 namespace Ui {
 class Widget;
@@ -28,7 +29,10 @@ private slots:
 
     void on_faultButton_clicked();
 
+    void upDateTime();
+
 private:
+    QTimer * timer;
     Ui::Widget *ui;
 };
 

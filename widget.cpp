@@ -1,7 +1,11 @@
 #include "widget.h"
 #include "ui_widget.h"
+#include "faultcustomtable.h"
 #include <QPushButton>
 #include <QPalette>
+#include <QDateTime>
+#include <QTimer>
+#include <QTime>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -16,13 +20,29 @@ Widget::Widget(QWidget *parent) :
     // Have remoteRadioButton selected at start
     ui->remoteRadioButton->setChecked(true);
 
+    //Fault table Display
+    ui->tableView->verticalHeader()->hide();
+    FaultCustomTable * model = new FaultCustomTable(this);
+    ui->tableView->setModel(model);
 
-}
+    //display date and time
+    timer = new QTimer(this);
+    timer->setInterval(1000);
+    QString timeString = QTime::currentTime().toString();
+    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(upDateTime()));
+    timer->start(1000);}
 
 Widget::~Widget()
 {
     delete ui;
 }
+
+void Widget::upDateTime()
+{
+     ui->dateTimeLabel->setText(QDateTime::currentDateTime().toString("MM-dd-yyyy  hh:mm:ss"));
+}
+
+
 
 void Widget::on_localRadioButton_clicked()
 {
@@ -60,3 +80,6 @@ void Widget::on_faultButton_clicked()
 {
 
 }
+
+
+

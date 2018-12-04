@@ -26,15 +26,20 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        widget.cpp
+        widget.cpp \
+    faultcustomtable.cpp
 
 HEADERS += \
-        widget.h
+        widget.h \
+    faultcustomtable.h
 
 FORMS += \
         widget.ui
 
+target.path = /home/qtproject
+INSTALLS += target
+
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+#qnx: target.path = /tmp/$${TARGET}/bin
+#else: unix:!android: target.path = /opt/$${TARGET}/bin
+#!isEmpty(target.path): INSTALLS += target
