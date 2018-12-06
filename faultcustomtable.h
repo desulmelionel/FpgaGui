@@ -19,6 +19,7 @@ public:
 
 private:
     QTimer * timer;
+    QTimer * faultTimer;
 
 };
 

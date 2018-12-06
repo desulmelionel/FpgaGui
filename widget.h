@@ -16,6 +16,8 @@ public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
 
+    double getLcdRefInput() const;
+
 private slots:
     void on_offButton_clicked();
 
@@ -31,8 +33,11 @@ private slots:
 
     void upDateTime();
 
+    void on_iRefButton_clicked();
+
 private:
     QTimer * timer;
+    double lcdRefInput;
     Ui::Widget *ui;
 };
 
